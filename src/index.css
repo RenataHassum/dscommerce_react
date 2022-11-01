@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 :root {
   --dsc-color-bg-primary: #e8e8e8;
@@ -24,7 +24,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
 }
 
 a,
@@ -84,11 +84,6 @@ header {
   display: flex;
   align-items: center;
   padding: 0 20px;
-}
-
-.dsc-header-client {
-  background-color: var(--dsc-color-bg-secondary);
-  color: var(--dsc-color-font-primary);
 }
 
 .dsc-header-admin {
@@ -204,18 +199,6 @@ nav a {
   cursor: pointer;
 }
 
-.dsc-btn-blue {
-  border: none;
-  background-color: var(--dsc-color-btn-primary);
-  color: var(--dsc-color-btn-inverse);
-}
-
-.dsc-btn-white {
-  border: 1px solid var(--dsc-color-btn-primary);
-  background-color: var(--dsc-color-btn-inverse);
-  color: var(--dsc-color-btn-primary);
-}
-
 .dsc-btn-next-page {
   border: 1px solid var(--dsc-color-btn-primary);
   padding: 10px;
@@ -236,7 +219,8 @@ nav a {
   color: var(--dsc-color-font-primary);
 }
 
-.dsc-search-bar button, .dsc-search-bar input {
+.dsc-search-bar button,
+.dsc-search-bar input {
   border: 1px solid var(--dsc-color-card-border);
 }
 
@@ -262,12 +246,12 @@ nav a {
   color: var(--dsc-color-font-primary);
 }
 
-.dsc-search-bar button[type="submit"] {
+.dsc-search-bar button[type='submit'] {
   border-right: none;
   border-radius: 4px 0 0 4px;
 }
 
-.dsc-search-bar button[type="reset"] {
+.dsc-search-bar button[type='reset'] {
   border-left: none;
   border-radius: 0 4px 4px 0;
 }
