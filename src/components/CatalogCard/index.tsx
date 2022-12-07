@@ -1,5 +1,4 @@
 import './styles.css';
-import computerImg from '../../assets/computer.png';
 import { ProductDTO } from '../../models/product';
 import { Link } from 'react-router-dom';
 

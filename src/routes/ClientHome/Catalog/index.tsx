@@ -5,11 +5,15 @@ import ButtonNextPage from '../../../components/ButtonNextPage';
 import { useEffect, useState } from 'react';
 import { ProductDTO } from '../../../models/product';
 import * as productService from '../../../services/product-service';
+import { CategoryDTO } from '../../../models/category';
 
 export default function Catalog() {
   const [products, setProducts] = useState<ProductDTO[]>([]);
 
+
   useEffect(() => {
+
+
     productService.findAll().then((response) => {
       setProducts(response.data.content);
     });
