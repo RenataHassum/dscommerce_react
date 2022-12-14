@@ -163,6 +163,7 @@ nav a {
 /* card styles */
 
 .dsc-card {
+  padding: 20px;
   border: 1px solid var(--dsc-color-card-border);
   border-radius: 4px;
   background-color: var(--dsc-color-card-bg);
@@ -189,6 +190,7 @@ nav a {
 
 .dsc-btn {
   width: 100%;
+  max-width: 220px;
   height: 42px;
   border-radius: 4px;
   font-size: 16px;

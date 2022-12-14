@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ProductDTO } from '../../../models/product';
 import * as productService from '../../../services/product-service';
+import * as cartService from '../../../services/cart-service';
 
 export default function ProductDetails() {
   const params = useParams();
@@ -25,6 +26,13 @@ export default function ProductDetails() {
       });
   }, []);
 
+  function handleBuyClick() {
+    if (product) {
+      cartService.addProduct(product);
+      navigate('/cart');
+    }
+  }
+
   return (
     <>
       <main>
@@ -33,7 +41,9 @@ export default function ProductDetails() {
             <ProductDetailsCard product={product} /> // só vai renderizar se der verdadeiro o product (se ele existe, se ele não for undefined renderiza)
           )}
           <div className="dsc-btn-page-container">
-            <ButtonPrimary text="Comprar" />
+            <div onClick={handleBuyClick}>
+              <ButtonPrimary text="Comprar" />
+            </div>
             <Link to={'/'}>
               <ButtonInverse text="Início" />
             </Link>
