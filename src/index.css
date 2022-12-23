@@ -182,15 +182,9 @@ nav a {
   grid-gap: 20px;
 }
 
-@media (min-width: 576px) {
-  .dsc-btn-page-container {
-    width: 220px;
-  }
-}
-
 .dsc-btn {
   width: 100%;
-  max-width: 220px;
+  min-width: 220px;
   height: 42px;
   border-radius: 4px;
   font-size: 16px;
@@ -199,6 +193,12 @@ nav a {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+@media (min-width: 576px) {
+  .dsc-btn-page-container {
+    width: 220px;
+  }
 }
 
 /*-----------------------------------------------------------------*/
