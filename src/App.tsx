@@ -3,11 +3,12 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import ClientHome from './routes/ClientHome';
 import Cart from './routes/ClientHome/Cart';
 import Catalog from './routes/ClientHome/Catalog';
+import Login from './routes/ClientHome/Login';
 import ProductDetails from './routes/ClientHome/ProductDetails';
 import { ContextCartCount } from './utils/context-cart';
 
 export default function App() {
- //PROVER O CONTEXTO GLOBALMENTE - Instanciar um useState em App.tsx
+  //PROVER O CONTEXTO GLOBALMENTE - Instanciar um useState em App.tsx
   const [contextCartCount, setContextCartCount] = useState<number>(0);
 
   return (
@@ -24,6 +25,7 @@ export default function App() {
               element={<ProductDetails />}
             />
             <Route path="cart" element={<Cart />} />
+            <Route path="login" element={<Login />} />
           </Route>
           <Route path="*" element={<Navigate to={'/'} />} />
         </Routes>
