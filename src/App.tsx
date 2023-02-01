@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Admin from './routes/Admin';
 import AdminHome from './routes/Admin/AdminHome';
 import ClientHome from './routes/ClientHome';
