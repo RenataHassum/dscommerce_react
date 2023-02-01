@@ -10,6 +10,7 @@ import ProductDetails from './routes/ClientHome/ProductDetails';
 import { ContextCartCount } from './utils/context-cart';
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
 import { history } from './utils/history';
+import { PrivateRoute } from './components/PrivateRoute';
 
 export default function App() {
   //PROVER O CONTEXTO GLOBALMENTE - Instanciar um useState em App.tsx
@@ -32,7 +33,14 @@ export default function App() {
             <Route path="login" element={<Login />} />
           </Route>
 
-          <Route path="/admin/" element={<Admin />}>
+          <Route
+            path="/admin/"
+            element={
+              <PrivateRoute>
+                <Admin />
+              </PrivateRoute>
+            }
+          >
             <Route index element={<AdminHome />} />
           </Route>
 
