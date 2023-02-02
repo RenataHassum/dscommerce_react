@@ -14,3 +14,4 @@ export const ContextCartCount = createContext<ContextCartCountType>({
 //PROVER O CONTEXTO GLOBALMENTE
 
 
+
