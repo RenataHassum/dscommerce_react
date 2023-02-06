@@ -8,14 +8,14 @@ import Catalog from './routes/ClientHome/Catalog';
 import Login from './routes/ClientHome/Login';
 import ProductDetails from './routes/ClientHome/ProductDetails';
 import { ContextCartCount } from './utils/context-cart';
-import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
-import { history } from './utils/history';
 import { PrivateRoute } from './components/PrivateRoute';
 import { AccessTokenPayloadDTO } from './models/auth';
 import { ContextToken } from './utils/context-token';
+import Confirmation from './routes/ClientHome/Confirmation';
+import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
+import { history } from './utils/history';
 import * as authService from './services/auth-service';
 import * as cartService from './services/cart-service';
-import Confirmation from './routes/ClientHome/Confirmation';
 
 export default function App() {
   //PROVER O CONTEXTO GLOBALMENTE - Instanciar um useState em App.tsx
@@ -25,6 +25,7 @@ export default function App() {
 
   useEffect(() => {
     setContextCartCount(cartService.getCart().items.length);
+
     if (authService.isAuthenticated()) {
       const payload = authService.getAccessTokenPayload();
       setContextTokenPayload(payload);
@@ -49,7 +50,14 @@ export default function App() {
               />
               <Route path="cart" element={<Cart />} />
               <Route path="login" element={<Login />} />
-              <Route path="confirmation/:orderId" element={<Confirmation />} />
+              <Route
+                path="confirmation/:orderId"
+                element={
+                  <PrivateRoute>
+                    <Confirmation />
+                  </PrivateRoute>
+                }
+              />
             </Route>
 
             <Route

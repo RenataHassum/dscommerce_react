@@ -24,6 +24,7 @@ export function addProduct(product: ProductDTO) {
     );
     cart.items.push(newItem);
     cartRepository.save(cart);
+ 
   }
 }
 
@@ -48,6 +49,7 @@ export function decreaseItem(productId: number) {
     if (item.quantity < 1) {
       cart.items = cart.items.filter((x) => x.productId !== productId);
     }
+
     cartRepository.save(cart);
   }
 }

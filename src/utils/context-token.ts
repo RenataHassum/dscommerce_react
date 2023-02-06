@@ -7,6 +7,7 @@ export type ContextTokenType = {
     accessTokenPayload: AccessTokenPayloadDTO | undefined,
   ) => void;
 };
+
 export const ContextToken = createContext<ContextTokenType>({
   contextTokenPayload: undefined,
   setContextTokenPayload: () => {},

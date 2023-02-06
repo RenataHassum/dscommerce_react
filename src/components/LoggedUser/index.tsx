@@ -1,8 +1,10 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import * as authService from '../../services/auth-service';
 import { ContextToken } from '../../utils/context-token';
+import * as authService from '../../services/auth-service';
+
 export default function LoggedUser() {
+  
   const { contextTokenPayload, setContextTokenPayload } =
     useContext(ContextToken);
 

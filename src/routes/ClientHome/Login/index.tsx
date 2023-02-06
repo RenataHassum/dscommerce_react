@@ -1,5 +1,5 @@
 import './styles.css';
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { CredentialsDTO } from '../../../models/auth';
 import * as authService from '../../../services/auth-service';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +14,7 @@ export default function Login() {
     password: '',
   });
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: any) {
     event.preventDefault();
     authService
       .loginRequest(formData)

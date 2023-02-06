@@ -2,10 +2,10 @@ import './styles.css';
 import { Link } from 'react-router-dom';
 import CartIcon from '../CartIcon';
 import iconAdmin from '../../assets/admin.svg';
-import * as authService from '../../services/auth-service';
 import { useContext } from 'react';
-import { ContextToken, ContextTokenType } from '../../utils/context-token';
+import { ContextToken } from '../../utils/context-token';
 import LoggedUser from '../LoggedUser';
+import * as authService from '../../services/auth-service';
 
 export default function HeaderClient() {
   const { contextTokenPayload } = useContext(ContextToken);

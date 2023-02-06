@@ -8,10 +8,11 @@ import * as orderService from '../../../services/order-service';
 export default function Confirmation() {
   const params = useParams();
   const [order, setOrder] = useState<OrderDTO>();
-  
+
   useEffect(() => {
     orderService.findByIdRequest(Number(params.orderId)).then((response) => {
       setOrder(response.data);
+      console.log(response.data);
     });
   }, []);
 
@@ -43,9 +44,11 @@ export default function Confirmation() {
             <h3>R$ {order?.total.toFixed(2)}</h3>
           </div>
         </div>
+
         <div className="dsc-confirmation-message dsc-mb20">
           Pedido realizado! Número {order?.id}
         </div>
+
         <div className="dsc-btn-page-container">
           <Link to={'/'}>
             <div className="dsc-btn dsc-btn-white">Início</div>
