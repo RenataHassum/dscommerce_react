@@ -16,6 +16,8 @@ import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
 import { history } from './utils/history';
 import * as authService from './services/auth-service';
 import * as cartService from './services/cart-service';
+import ProductListing from './routes/Admin/AdminHome/ProductListing';
+import ProductForm from './routes/Admin/AdminHome/ProductForm';
 
 export default function App() {
   //PROVER O CONTEXTO GLOBALMENTE - Instanciar um useState em App.tsx
@@ -68,7 +70,10 @@ export default function App() {
                 </PrivateRoute>
               }
             >
-              <Route index element={<AdminHome />} />
+              <Route index element={<Navigate to='/admin/home' />} />
+              <Route path='home' element={<AdminHome />} />
+              <Route path="products" element={<ProductListing />} />
+              <Route path="products/:productId" element={<ProductForm />} />
             </Route>
 
             <Route path="*" element={<Navigate to={'/'} />} />
