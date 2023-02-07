@@ -3,13 +3,18 @@ import ButtonPrimary from '../ButtonPrimary';
 
 type Props = {
   message: string;
+  id: number;
   onDialogAnswer: Function;
 };
 
-export default function DialogConfirmation({ message, onDialogAnswer }: Props) {
+export default function DialogConfirmation({
+  message,
+  id,
+  onDialogAnswer,
+}: Props) {
   return (
     <div
-      onClick={() => onDialogAnswer(false)}
+      onClick={() => onDialogAnswer(false, id)}
       className="dsc-dialog-background"
     >
       <div
@@ -18,10 +23,10 @@ export default function DialogConfirmation({ message, onDialogAnswer }: Props) {
       >
         <h2>{message}</h2>
         <div className="dsc-dialog-btn-container">
-          <div onClick={() => onDialogAnswer(false)}>
+          <div onClick={() => onDialogAnswer(false, id)}>
             <ButtonInverse text="Não" />
           </div>
-          <div onClick={() => onDialogAnswer(true)}>
+          <div onClick={() => onDialogAnswer(true, id)}>
             <ButtonPrimary text="Sim" />
           </div>
         </div>

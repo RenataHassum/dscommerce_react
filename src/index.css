@@ -406,3 +406,7 @@ nav a {
   gap: 20px;
   width: 100%;
 }
+
+.dsc-dialog-btn {
+  width: 100%;
+}

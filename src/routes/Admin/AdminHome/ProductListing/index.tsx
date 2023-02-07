@@ -33,6 +33,7 @@ export default function ProductListing() {
 
   const [dialogConfirmationData, setDialogConfirmationData] = useState({
     visible: false,
+    id: 0,
     message: 'Tem certeza?',
   });
 
@@ -59,13 +60,33 @@ export default function ProductListing() {
     setDialogInfoData({ ...dialogInfoData, visible: false });
   }
 
-  function handleDeleteClick() {
-    setDialogConfirmationData({ ...dialogConfirmationData, visible: true });
+  function handleDeleteClick(productId: number) {
+    setDialogConfirmationData({
+      ...dialogConfirmationData,
+      id: productId,
+      visible: true,
+    });
   }
 
-  function handleOnDialogConfirmationAnswer(answer: boolean) {
+  function handleOnDialogConfirmationAnswer(
+    answer: boolean,
+    productId: number,
+  ) {
+    if (answer) {
+      productService
+        .deleteById(productId)
+        .then((response) => {
+          setProducts([]);
+          setQueryParams({ ...queryParams, page: 0 });
+        })
+        .catch((error) => {
+          setDialogInfoData({
+            visible: true,
+            message: error.response.data.error,
+          });
+        });
+    }
     setDialogConfirmationData({ ...dialogConfirmationData, visible: false });
-    console.log('resposta', answer);
   }
 
   return (
@@ -112,7 +133,7 @@ export default function ProductListing() {
                 </td>
                 <td>
                   <img
-                    onClick={handleDeleteClick}
+                    onClick={() => handleDeleteClick(product.id)}
                     className="dsc-product-listing-btn"
                     src={deleteIcon}
                     alt="Deletar"
@@ -129,11 +150,13 @@ export default function ProductListing() {
         <DialogInfo
           message={dialogInfoData.message}
           onDialogClose={handleOnDialogInfoClose}
+          s
         />
       )}
 
       {dialogConfirmationData.visible && (
         <DialogConfirmation
+          id={dialogConfirmationData.id}
           message={dialogConfirmationData.message}
           onDialogAnswer={handleOnDialogConfirmationAnswer}
         />
