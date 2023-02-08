@@ -41,7 +41,6 @@ export default function Login() {
         authService.saveAccessToken(response.data.access_token);
         setContextTokenPayload(authService.getAccessTokenPayload());
         navigate('/cart');
-        console.log('forms.tovalues: ', forms.toValues(formData));
       })
       .catch((error) => {
         console.log('error no login', error);
