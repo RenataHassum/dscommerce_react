@@ -4,6 +4,7 @@ import { CredentialsDTO } from '../../../models/auth';
 import * as authService from '../../../services/auth-service';
 import { useNavigate } from 'react-router-dom';
 import { ContextToken } from '../../../utils/context-token';
+import FormInput from '../../../components/FormInput';
 
 export default function Login() {
   const { setContextTokenPayload } = useContext(ContextToken);
@@ -24,11 +25,11 @@ export default function Login() {
       message: 'Favor informar um email válido',
     },
     password: {
-      value: '',
-      id: 'password',
       name: 'password',
+      value: '',
       type: 'password',
       placeholder: 'Senha',
+      id: 'password',
     },
   });
 
@@ -63,24 +64,18 @@ export default function Login() {
             <h2>Login</h2>
             <div className="dsc-form-controls-container">
               <div>
-                <input
-                  name="username"
-                  value={formData.username.value}
-                  className="dsc-form-control"
-                  type="text"
-                  placeholder="Email"
+                <FormInput
+                  {...formData.username}
                   onChange={handleInputChange}
+                  className="dsc-form-control"
                 />
                 <div className="dsc-form-error"></div>
               </div>
               <div>
-                <input
-                  name="password"
-                  value={formData.password.value}
-                  className="dsc-form-control"
-                  type="password"
-                  placeholder="Senha"
+                <FormInput
+                  {...formData.password}
                   onChange={handleInputChange}
+                  className="dsc-form-control"
                 />
               </div>
             </div>
