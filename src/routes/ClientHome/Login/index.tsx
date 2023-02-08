@@ -1,6 +1,5 @@
 import './styles.css';
 import { useContext, useState } from 'react';
-import { CredentialsDTO } from '../../../models/auth';
 import * as authService from '../../../services/auth-service';
 import { useNavigate } from 'react-router-dom';
 import { ContextToken } from '../../../utils/context-token';
@@ -37,14 +36,12 @@ export default function Login() {
   function handleSubmit(event: any) {
     event.preventDefault();
     authService
-      .loginRequest({
-        username: formData.username.value,
-        password: formData.password.value,
-      })
+      .loginRequest(forms.toValues(formData))
       .then((response) => {
         authService.saveAccessToken(response.data.access_token);
         setContextTokenPayload(authService.getAccessTokenPayload());
         navigate('/cart');
+        console.log('forms.tovalues: ', forms.toValues(formData));
       })
       .catch((error) => {
         console.log('error no login', error);
@@ -53,6 +50,7 @@ export default function Login() {
 
   function handleInputChange(event: any) {
     setFormData(forms.update(formData, event.target.name, event.target.value));
+    console.log('FORMDATA: ', formData);
   }
 
   return (
