@@ -150,7 +150,6 @@ export default function ProductListing() {
         <DialogInfo
           message={dialogInfoData.message}
           onDialogClose={handleOnDialogInfoClose}
-          s
         />
       )}
 
