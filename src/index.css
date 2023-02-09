@@ -275,6 +275,8 @@ nav a {
 }
 
 .dsc-textarea {
+  width: 100%;
+  min-width: 460px;
   resize: none;
   height: 128px;
   padding-top: 10px;

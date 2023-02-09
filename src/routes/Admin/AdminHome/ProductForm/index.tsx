@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import FormInput from '../../../../components/FormInput';
 import * as forms from '../../../../utils/forms';
 import * as productService from '../../../../services/product-service';
+import FormTextArea from '../../../../components/FormTextArea';
 
 export default function ProductForm() {
   const params = useParams();
@@ -39,6 +40,17 @@ export default function ProductForm() {
       name: 'imgUrl',
       type: 'text',
       placeholder: 'Imagem',
+    },
+    description: {
+      value: '',
+      id: 'description',
+      name: 'description',
+      type: 'text',
+      placeholder: 'Descrição',
+      validation: function (value: string) {
+        return /^.{10,}$/.test(value);
+      },
+      message: 'Descrição com mínimo de 10 caracteres',
     },
   });
 
@@ -96,7 +108,19 @@ export default function ProductForm() {
               </div>
             </div>
 
-            <div className="dsc-product-form-buttons">
+            <div>
+              <FormTextArea
+                {...formData.description}
+                onChange={handleInputChange}
+                onTurnDirty={handleOnTurnDirty}
+                className="dsc-form-control dsc-textarea"
+              />
+              <div className="dsc-form-error">
+                {formData.description.message}
+              </div>
+            </div>
+
+            <div className="dsc-product-form-buttons dsc-mt20">
               <Link to="/admin/products">
                 <button type="reset" className="dsc-btn dsc-btn-white">
                   Cancelar
