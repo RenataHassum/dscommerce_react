@@ -22,7 +22,6 @@ export function validate(inputs: any, name: string) {
   if (!inputs[name].validation) {
     return inputs;
   }
-  console.log('inputs', inputs);
   const isInvalid = !inputs[name].validation(inputs[name].value);
   return {
     ...inputs,
@@ -32,4 +31,14 @@ export function validate(inputs: any, name: string) {
 
 export function toDirty(inputs: any, name: string) {
   return { ...inputs, [name]: { ...inputs[name], dirty: 'true' } };
+}
+
+export function updateAndValidate(inputs: any, name: string, newValue: any) {
+  const dataUpdated = update(inputs, name, newValue);
+  return validate(dataUpdated, name);
+}
+
+export function dirtyAndValidate(inputs: any, name: string) {
+  const dataDirty = toDirty(inputs, name);
+  return validate(dataDirty, name);
 }

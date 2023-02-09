@@ -17,6 +17,10 @@ export default function ProductForm() {
       name: 'name',
       type: 'text',
       placeholder: 'Nome',
+      validation: function (value: string) {
+        return /^.{3,80}$/.test(value);
+      },
+      message: 'Favor informar nome de 3 a 80 caracteres',
     },
     price: {
       value: '',
@@ -39,8 +43,6 @@ export default function ProductForm() {
   });
 
   useEffect(() => {
-    const result = forms.toDirty(formData, 'price');
-    console.log(result);
     if (isEditing) {
       productService.findById(Number(params.productId)).then((response) => {
         const newUpdateFormData = forms.updateAll(formData, response.data);
@@ -50,18 +52,13 @@ export default function ProductForm() {
   }, []);
 
   function handleInputChange(event: any) {
-    const dataUpdated = forms.update(
-      formData,
-      event.target.name,
-      event.target.value,
+    setFormData(
+      forms.updateAndValidate(formData, event.target.name, event.target.value),
     );
-    const dataValidated = forms.validate(dataUpdated, event.target.name);
-    setFormData(dataValidated);
   }
 
   function handleOnTurnDirty(name: string) {
-    const newFormData = forms.toDirty(formData, name);
-    setFormData(newFormData);
+    setFormData(forms.dirtyAndValidate(formData, name));
   }
 
   return (
