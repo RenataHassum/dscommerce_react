@@ -262,24 +262,17 @@ nav a {
   display: none;
 }
 
-.dsc-select:invalid {
-  color: var(--dsc-color-font-placeholder);
-}
-
-.dsc-select option[disabled] {
-  display: none;
-}
-
-.dsc-select option {
-  color: var(--dsc-color-font-primary);
-}
-
 .dsc-textarea {
   width: 100%;
   min-width: 460px;
   resize: none;
   height: 128px;
   padding-top: 10px;
+}
+
+.dsc-form-select-container {
+  padding: unset;
+  height: unset;
 }
 
 @media (min-width: 576px) {

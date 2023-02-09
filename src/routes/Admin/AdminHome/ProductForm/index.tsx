@@ -8,6 +8,7 @@ import { CategoryDTO } from '../../../../models/category';
 import * as productService from '../../../../services/product-service';
 import * as categoryService from '../../../../services/category-service';
 import FormSelect from '../../../../components/FormSelect';
+import { selectStyles } from '../../../../utils/select';
 
 export default function ProductForm() {
   const params = useParams();
@@ -141,7 +142,8 @@ export default function ProductForm() {
                     setFormData(newFormData);
                   }}
                   onTurnDirty={handleOnTurnDirty}
-                  className="dsc-form-control"
+                  className="dsc-form-control dsc-form-select-container"
+                  styles={selectStyles}
                   isMulti
                   getOptionLabel={(obj: any) => obj.name}
                   getOptionValue={(obj: any) => String(obj.id)}
