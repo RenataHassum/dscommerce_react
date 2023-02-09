@@ -20,6 +20,8 @@ type QueryParams = {
 };
 
 export default function ProductListing() {
+  const navigate = useNavigate();
+
   const [queryParams, setQueryParams] = useState<QueryParams>({
     page: 0,
     name: '',
@@ -69,6 +71,10 @@ export default function ProductListing() {
       id: productId,
       visible: true,
     });
+  }
+
+  function handleUpdateClick(productId: number) {
+    navigate(`/admin/products/${productId}`);
   }
 
   function handleOnDialogConfirmationAnswer(
@@ -131,6 +137,7 @@ export default function ProductListing() {
                 <td className="dsc-txt-left">{product.name}</td>
                 <td>
                   <img
+                    onClick={() => handleUpdateClick(product.id)}
                     className="dsc-product-listing-btn"
                     src={editIcon}
                     alt={'Editar'}
