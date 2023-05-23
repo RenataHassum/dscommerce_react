@@ -21,7 +21,6 @@ export default function ProductDetails() {
     productService
       .findById(Number(params.productId))
       .then((response) => {
-        console.log(response);
         setProduct(response.data);
       })
       .catch((error) => {

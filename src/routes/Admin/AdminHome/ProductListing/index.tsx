@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react';
 import * as productService from '../../../../services/product-service';
 import { ProductDTO } from '../../../../models/product';
 import SearchBar from '../../../../components/SearchBar';
-import ButtonNextPage from '../../../../components/ButtonNextPage';
 import DialogInfo from '../../../../components/DialogInfo';
 import DialogConfirmation from '../../../../components/DialogConfirmation';
-import ButtonInverse from '../../../../components/ButtonInverse';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import ButtonInverseAdmin from '../../../../components/ButtonInverseAdmin';
+import ButtonNextPageAdmin from '../../../../components/ButtonNextPageAdmin';
 
 type QueryParams = {
   page: number;
@@ -105,7 +105,7 @@ export default function ProductListing() {
 
         <div className="dsc-btn-page-container dsc-mb20">
           <Link to="/admin/products/create">
-            <ButtonInverse text="Novo" />
+            <ButtonInverseAdmin text="Novo" />
           </Link>
         </div>
 
@@ -113,7 +113,7 @@ export default function ProductListing() {
 
         <table className="dsc-table dsc-mb20 dsc-mt20">
           <thead>
-            <tr>
+            <tr className="dsc-tb320">
               <th className="dsc-tb576">ID</th>
               <th></th>
               <th className="dsc-tb768">Preço</th>
@@ -156,7 +156,9 @@ export default function ProductListing() {
           </tbody>
         </table>
 
-        {!isLastPage && <ButtonNextPage onNextPage={handleNextPageClick} />}
+        {!isLastPage && (
+          <ButtonNextPageAdmin onNextPage={handleNextPageClick} />
+        )}
       </section>
       {dialogInfoData.visible && (
         <DialogInfo

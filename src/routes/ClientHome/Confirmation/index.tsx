@@ -12,7 +12,6 @@ export default function Confirmation() {
   useEffect(() => {
     orderService.findByIdRequest(Number(params.orderId)).then((response) => {
       setOrder(response.data);
-      console.log(response.data);
     });
   }, []);
 
@@ -51,7 +50,7 @@ export default function Confirmation() {
 
         <div className="dsc-btn-page-container">
           <Link to={'/'}>
-            <div className="dsc-btn dsc-btn-white">Início</div>
+            <div className="dsc-btn dsc-btn-inverse">Início</div>
           </Link>
         </div>
       </section>

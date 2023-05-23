@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import cartIcon from '../../assets/cart.svg';
+import cartIcon from '../../assets/shopping-cart.svg';
 import './styles.css';
 import { ContextCartCount } from '../../utils/context-cart';
 

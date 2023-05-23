@@ -111,9 +111,17 @@ export default function ProductForm() {
     const request = isEditing
       ? productService.updateRequest(requestBody)
       : productService.insertRequest(requestBody);
-    request.then((response) => {
-      navigate('/admin/products');
-    });
+    request
+      .then((response) => {
+        navigate('/admin/products');
+      })
+      .catch((error) => {
+        const newInputs = forms.setBackendErrors(
+          formData,
+          error.response.data.errors,
+        );
+        setFormData(newInputs);
+      });
   }
 
   return (
@@ -189,12 +197,12 @@ export default function ProductForm() {
 
             <div className="dsc-product-form-buttons">
               <Link to="/admin/products">
-                <button type="reset" className="dsc-btn dsc-btn-white">
+                <button type="reset" className="dsc-btn dsc-btn-inverse-admin dsc-btn-cancel">
                   Cancelar
                 </button>
               </Link>
 
-              <button type="submit" className="dsc-btn dsc-btn-blue">
+              <button type="submit" className="dsc-btn dsc-btn-primary-admin dsc-btn-save">
                 Salvar
               </button>
             </div>

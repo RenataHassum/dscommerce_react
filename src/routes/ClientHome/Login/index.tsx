@@ -5,9 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { ContextToken } from '../../../utils/context-token';
 import FormInput from '../../../components/FormInput';
 import * as forms from '../../../utils/forms';
+import ButtonPrimary from '../../../components/ButtonPrimary';
 
 export default function Login() {
+  const [submitResponseFail, setSubmitResponseFail] = useState(false);
+
   const { setContextTokenPayload } = useContext(ContextToken);
+
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState<any>({
@@ -35,6 +39,15 @@ export default function Login() {
 
   function handleSubmit(event: any) {
     event.preventDefault();
+
+    setSubmitResponseFail(false);
+
+    const formDataValidated = forms.dirtyAndValidateAll(formData);
+    if (forms.hasAnyInvalid(formDataValidated)) {
+      setFormData(formDataValidated);
+      return;
+    }
+
     authService
       .loginRequest(forms.toValues(formData))
       .then((response) => {
@@ -43,7 +56,7 @@ export default function Login() {
         navigate('/cart');
       })
       .catch((error) => {
-        console.log('error no login', error);
+        setSubmitResponseFail(true);
       });
   }
 
@@ -84,9 +97,14 @@ export default function Login() {
                 />
               </div>
             </div>
+            {submitResponseFail && (
+              <div className="dsc-form-global-error">
+                Usuário ou senha inválidos
+              </div>
+            )}
 
             <div className="dsc-login-form-buttons dsc-mt20">
-              <button type="submit" className="dsc-btn dsc-btn-blue">
+              <button type="submit" className="dsc-btn dsc-btn-primary">
                 Entrar
               </button>
             </div>

@@ -52,7 +52,7 @@ export default function Cart() {
               Seu carrinho está vazio
             </h2>
             <Link to="/catalog" className="dsc-btn-page-container">
-              <div className="dsc-btn dsc-btn-white">Voltar as compras</div>
+              <div className="dsc-btn dsc-btn-inverse">Voltar as compras</div>
             </Link>
           </div>
         ) : (
@@ -99,18 +99,18 @@ export default function Cart() {
               <div className="dsc-btn-page-container dsc-bg">
                 <div
                   onClick={handlePlaceOrderClick}
-                  className="dsc-btn dsc-btn-blue dsc-mt20"
+                  className="dsc-btn dsc-mt20 dsc-btn-primary"
                 >
                   Finalizar pedido
                 </div>
                 <Link to="/catalog">
-                  <div className="dsc-btn dsc-btn-white">
+                  <div className="dsc-btn dsc-btn-inverse">
                     Continuar comprando
                   </div>
                 </Link>
                 <div
                   onClick={handleClearClick}
-                  className="dsc-btn dsc-btn-white"
+                  className="dsc-btn dsc-btn-inverse"
                 >
                   Limpar carrinho
                 </div>

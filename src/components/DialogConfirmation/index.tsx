@@ -1,5 +1,5 @@
-import ButtonInverse from '../ButtonInverse';
-import ButtonPrimary from '../ButtonPrimary';
+import ButtonInverseAdmin from '../ButtonInverseAdmin';
+import ButtonPrimaryAdmin from '../ButtonPrimaryAdmin';
 
 type Props = {
   message: string;
@@ -24,10 +24,10 @@ export default function DialogConfirmation({
         <h2>{message}</h2>
         <div className="dsc-dialog-btn-container">
           <div onClick={() => onDialogAnswer(false, id)}>
-            <ButtonInverse text="Não" />
+            <ButtonInverseAdmin text="Não" />
           </div>
           <div onClick={() => onDialogAnswer(true, id)}>
-            <ButtonPrimary text="Sim" />
+            <ButtonPrimaryAdmin text="Sim" />
           </div>
         </div>
       </div>

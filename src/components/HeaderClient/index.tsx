@@ -1,7 +1,7 @@
 import './styles.css';
 import { Link } from 'react-router-dom';
 import CartIcon from '../CartIcon';
-import iconAdmin from '../../assets/admin.svg';
+import iconAdmin from '../../assets/settings.svg';
 import { useContext } from 'react';
 import { ContextToken } from '../../utils/context-token';
 import LoggedUser from '../LoggedUser';
@@ -14,7 +14,7 @@ export default function HeaderClient() {
     <header className="dsc-header-client">
       <nav className="dsc-container">
         <Link to={'/'}>
-          <h1>DSCommerce</h1>
+          <h1>RHCommerce</h1>
         </Link>
         <div className="dsc-navbar-right">
           <div className="dsc-menu-items-container">

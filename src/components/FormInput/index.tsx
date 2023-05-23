@@ -13,6 +13,7 @@ export default function FormInput(props: any) {
 
   return (
     <input
+      className="teste"
       {...inputProps}
       onBlur={handleBlur}
       data-invalid={invalid}

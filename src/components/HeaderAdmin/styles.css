@@ -1,4 +1,4 @@
 .dsc-header-admin {
-  background-color: var(--dsc-color-bg-quaternary);
-  color: var(--dsc-color-font-tertiary);
+  background-color: var(--dsc-color-header-adm);
+  color: var(--dsc-color-font-quartiary);
 }
