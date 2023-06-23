@@ -9,6 +9,7 @@ import * as productService from '../../../../services/product-service';
 import * as categoryService from '../../../../services/category-service';
 import FormSelect from '../../../../components/FormSelect';
 import { selectStyles } from '../../../../utils/select';
+import Select from 'react-select';
 
 export default function ProductForm() {
   const navigate = useNavigate();
@@ -124,6 +125,13 @@ export default function ProductForm() {
       });
   }
 
+  // teste categories list
+  const options = [
+    { value: 'eletrônico', label: 'Eletrônico' },
+    { value: 'computador', label: 'Computador' },
+    { value: 'jogo', label: 'Jogo' },
+  ];
+
   return (
     <main>
       <section id="product-form-section" className="dsc-container">
@@ -158,7 +166,7 @@ export default function ProductForm() {
                 />
               </div>
 
-              <div>
+              {/* <div>
                 <FormSelect
                   {...formData.categories}
                   options={categories}
@@ -180,8 +188,12 @@ export default function ProductForm() {
                 <div className="dsc-form-error">
                   {formData.categories.message}
                 </div>
-              </div>
+              </div> */}
 
+              {/* aula 08-31 teste categories list https://react-select.com/home */}
+              <div>
+                <Select options={options} isMulti />
+              </div>
               <div>
                 <FormTextArea
                   {...formData.description}
@@ -197,12 +209,18 @@ export default function ProductForm() {
 
             <div className="dsc-product-form-buttons">
               <Link to="/admin/products">
-                <button type="reset" className="dsc-btn dsc-btn-inverse-admin dsc-btn-cancel">
+                <button
+                  type="reset"
+                  className="dsc-btn dsc-btn-inverse-admin dsc-btn-cancel"
+                >
                   Cancelar
                 </button>
               </Link>
 
-              <button type="submit" className="dsc-btn dsc-btn-primary-admin dsc-btn-save">
+              <button
+                type="submit"
+                className="dsc-btn dsc-btn-primary-admin dsc-btn-save"
+              >
                 Salvar
               </button>
             </div>

@@ -12,9 +12,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* display: grid; */
-  /* grid-gap: 20px; */
-  /* grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); */
 }
 
 .dsc-btn-cancel {
